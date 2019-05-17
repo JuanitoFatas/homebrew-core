@@ -20,6 +20,18 @@ class Gel < Formula
     man1.install Pathname.glob("man/man1/*.1")
   end
 
+  def caveats; <<~EOS
+    Enable Gel in your current shell:
+
+      eval "$(gel shell-setup)"
+
+    To enable gel everywhere,
+
+      echo 'eval "$(gel shell-setup)"' >> ~/.bashrc
+      echo 'eval "$(gel shell-setup)"' >> ~/.zshrc
+  EOS
+  end
+
   test do
     (testpath/"Gemfile").write <<~EOS
       source "https://rubygems.org"
